@@ -1,7 +1,7 @@
 Good afternoon, everyone. I'm Mingyu Xia. The topic of my pre. today is
 `Band Structure of 2D Kagome Lattice`.
 
-First, I shall briefly introduce it.
+Firstly, I shall briefly introduce it.
 
 So, what is Kagome? On geometry, it is a trihexagonal.
 Sometimes, one can find that the floor in a certain area is spliced from it.
