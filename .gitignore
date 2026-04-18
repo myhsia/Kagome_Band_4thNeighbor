@@ -24,3 +24,5 @@ PHY4804@CMT.pdf
 *.synctex(busy)
 *.toc
 *.xml
+*.nav
+*.snm

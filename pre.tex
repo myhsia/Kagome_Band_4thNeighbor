@@ -1,29 +1,27 @@
 \documentclass[svgnames, aspectratio = 1610]{beamer}
 \linespread{1.2}
 \usepackage[compatibility = false]{caption}
-\usepackage{graphicx, subcaption, array, booktabs, mathtools, extarrows,
-            tikz, mhchem, physics2, fixdif, derivative, lmodern, dsfont,
-            CJKutf8, url, paracol, microtype, bm, ragged2e, multicol, menukeys}
+\usepackage{graphicx, mathtools, tikz, menukeys, physics3,
+            lmodern, CJKutf8, url, microtype, bm}
+\usephxmodu{operator}
+\usepackage[version = 4]{mhchem}
 \usepackage[mono = false]{libertine}
-\DeclareRobustCommand \iu {\mathrm i\mkern1mu}
-\DeclareMathOperator \upe {e}
-\usetheme{westlake}
-\justifying
+\graphicspath{{./media/}}
+\usetheme[logobg = westlake-logo.pdf,
+          lbadge = westlake-badge.pdf,
+          mainbg = westlake-paint-a.png,
+          basebg = westlake-paint-b.png]{westlake}
 \usepackage{zref-clever, zref-titleref}
+\usepackage[natbib, style = phys, biblabel = brackets, sorting = none]{biblatex}
+\addbibresource{reference.bib}
 \setlength \abovedisplayskip {6pt}
 \setlength \belowdisplayskip {6pt}
-\graphicspath{{./media/}}
 
-\westlakeset{
-  title      = Band Structure of 2D Kagome Lattice,
-  subtitle   = Final Project Presentation,
-  author     ={ \texorpdfstring{Mingyu Xia (夏明宇) |
-                \textit{Department of Physics, Westlake University}}%
-                  {Mingyu Xia}, Mingyu Xia},
-  date       = {\texttt{2026-01-09 \textbar\ E10-215@Yungu Campus}},
-  background = bgimage,
-  bibsource  = reference.bib,
-}
+\title[Final Project Presentation]{Band Structure of 2D Kagome Lattice}
+\author[Mingyu Xia]{\texorpdfstring{Mingyu Xia (夏明宇) |
+                    \textit{Department of Physics, Westlake University}}
+                      {Mingyu Xia}}
+\date{\texttt{2026-01-09 | E10-215@Yungu Campus}}
 
 \begin{document}
 
@@ -228,7 +226,7 @@
   \end{block}
   \pause
   \begin{exampleblock}{Eigen Equation}
-    From $\det(\tilde{\mathcal H} - E\mathds 1) = 0$, one
+    From $\det(\tilde{\mathcal H} - E\identity) = 0$, one
     can obtain a cubic polynomial in $E$
     \begin{equation}
       E^3 - 2E \sum_i^3 t_i^2 (1 + \cos(\bm k \cdot \bm\delta_i))
@@ -405,7 +403,7 @@
   \end{columns}
   \visible<4->{%
   Interesting, $\mathcal H_\text{NNNN}$ is a diagonal matrix. Energy bands can
-  be obtained from $\det(\tilde{\mathcal H} - E\mathds 1) = 0$.}%
+  be obtained from $\det(\tilde{\mathcal H} - E\identity) = 0$.}%
 \end{frame}
 
 \nocite{*}
