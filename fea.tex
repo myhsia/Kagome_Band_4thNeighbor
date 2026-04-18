@@ -31,7 +31,7 @@
 
 \section{INTRODUCTION TO FEA}
 
-\begin{frame}{Core Philosophy: The "Divide and Conquer" Approach}
+\begin{frame}{Core Philosophy: The ``Divide and Conquer'' Approach}
   \begin{block}{From Continuous to Discrete}
     FEA is a numerical strategy to solve complex PDEs by approximating a continuous domain $\Omega$ with a collection of simple sub-domains called \textbf{elements} ($\Omega_e$).
   \end{block}
@@ -39,14 +39,13 @@
     \begin{column}{.6\linewidth}
       \begin{itemize}
         \item \textbf{Complex Geometry:} Handled by fitting the mesh to the boundary.
-        \item \textbf{Local Basis:} Instead of global functions, we use local "piecewise" polynomials.
+        \item \textbf{Local Basis:} Instead of global functions, we use local ``piecewise'' polynomials.
         \item \textbf{Nodal Representation:} The field (e.g., $\psi$) is solved only at specific points (nodes).
       \end{itemize}
     \end{column}
     \hfill
     \begin{column}{.36\linewidth}
       \centering
-      
       \begin{tikzpicture}[scale=1.2]
         \draw[thick, fill=blue!5] (0,0) to[out=20, in=160] (2,0) to[out=110, in=-20] (1.5,1.5) to[out=200, in=20] (0,1) -- cycle;
         \node at (1,0.7) {$\Omega$};
