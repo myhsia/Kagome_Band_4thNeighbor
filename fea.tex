@@ -88,10 +88,10 @@
             ($(fea.north west)!\fpeval{8.8/19}!(fea.north east)$);
           \coordinate (nodesouth) at
             ($(fea.south west)!\fpeval{8.8/19}!(fea.south east)$);
-          \shade [ball color = blue]
-            ($(nodenorth)!\fpeval{2.5/12}!(nodesouth)$) circle (.05);
           \draw [blue, thick, ->] ($(nodenorth)!\fpeval{2.5/12}!(nodesouth)$)
            to [bend left = 30] ++ (.75, .5) node [right] {node};
+          \shade [ball color = blue]
+            ($(nodenorth)!\fpeval{2.5/12}!(nodesouth)$) circle (.05);
         \end{tikzpicture}
       \end{column}
     \end{columns}
