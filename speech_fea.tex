@@ -1,0 +1,205 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[nopatch = all]{microtype}
+\usepackage{anyfontsize, libertine, bm}
+
+\usepackage[margin = .8in]{geometry}
+\usepackage{multicol}
+
+\setlength \parindent {0pt}
+\newcommand \newslide {\par\noindent\rule{\linewidth}{.5pt}\par}
+\newcommand \newframe {\par\noindent\rule{\linewidth}{.5pt}\par
+                       \vskip-.9\baselineskip
+                           \noindent\rule{\linewidth}{.5pt}\par}
+
+\begin{document}
+
+\begin{multicols*}{3}
+  Good morning, everyone.
+  Today, I will share the calculation of band structure of 2D Kagome Lattice
+  via finite element analysis.
+  \newframe
+  Firstly, I will introduce the Finite Element Analysis method,
+  short for ``FEA''.
+  \newframe
+  In short, FEA is a divide and conquer approach.
+  It is a general numerical method for solving PDE in two- or
+  three-space variables especially for some boundary value problems.
+  \newslide
+  It subdivides a large system into smaller, simpler parts called
+  finite elements.
+  \newslide
+  When applying it to solve the PDEs, one will approximate a continuous domain,
+  with a collection of simple sub-domains, which is called elements.
+  \newslide
+  For example, given a material.
+  Then one can slice it like this figure.
+  \newslide
+  Then, using local ``piecewise'' polynomials instead of global functions.
+  \newslide
+  The field is solved only at specific points or nodes,
+  also shown in this figure.
+  \newframe
+  Next, I'll talk about the mathematical principle.
+  Schr\"odinger equation acts an important part in the strong-correlating
+  electron theory. Usually, we need to solve it directly at every point, but FEA
+  satisfies it on average using the method of weighted residuals.
+  \newslide
+  To do this, we need to obtain its weak formulation.
+  Since the Schr\"odinger equation is an eigenequation,
+  we can sightly rearrange the Schr\"odinger equation by defining $R$,
+  then our goal is to minimize the residual.
+  \newslide
+  Usually, or I can say ``in the Cartesian coordinate system'', the Hamiltonian
+  operator $\mathcal H$ is constructed with the kinetic term and the
+  potential term. We expand it, and then multiply a test function $v$,
+  finally integrate over the full space.
+  \newslide
+  Finally, we shall apply the integration by parts, and there will be an
+  boundary term, which will be vanished due to the periodicity.
+  Now, we have obtained the weak formulation.
+  \newframe
+  OK. Now, I will talk about the methodology.
+  \newframe
+  We need to use a shape function to form the unknown field.
+  \newslide
+  The unknown field is a linear combination of the values at the nodes
+  \newslide
+  and the shape functions.
+  The shape functions are usually linear or quadratic polynomials.
+  \newslide
+  Typically, it has a value of 1 at node $i$ and 0 at all other nodes,
+  as shown in the figure.
+  \newslide
+  Now, we switch from the nodes to the element.
+  Each element has its stiffness matrix and mass matrix, as defined following.
+  They can be used to construct the global matrices.
+  \newslide
+  by summing them.
+  Then, we arrive at another eigenvalue problem:
+  from the eigenvalue for Hamiltonian operator to the eigenvalue to matrix.
+  \newframe
+  We choose the triangular element as an example now:
+  the three nodes of it are $(x_1,y_1)$, $(x_2,y_2)$, and $(x_3,y_3)$.
+  Then, the shape functions will become as this.
+  \newslide
+  We substitute it into the expression of the stiffness Matrix and
+  mass matrix we mentioned before.
+  \newframe
+  OK. Now, let me introduce the parameters.
+  We choose the Kagome lattice (in Chinese, its Lóng Mù, which the lattice will
+  be displayed later).
+  \newslide
+  We will give out its lattice geometry,
+  \newslide
+  numerical parameters,
+  \newslide
+  and the uniform physical constants.
+  \newframe
+  Originally, people usually tend to use the tight-binding model,
+  so, this table shows the differences between it and the FEA method.
+  \newslide
+  Also, in the lattice, we assume the potential is periodic.
+  \newslide
+  The numerical workflow including defining the geometry,
+  \newslide
+  dividing the mesh,
+  \newslide
+  and physically, the next three steps are used to analyze the band structure.
+  \newframe
+  What's more, the wavefunction in the lattice should satisfy the Bloch's
+  theorem to obey the periodic condition.
+  \newslide
+  In FEA, this condition will be implemented as a constraint on the boundary
+  nodes of the unit cell mesh.
+  \newslide
+  As we can see that this relation has made the wavefunction raise a phase
+  factor, which can be also implemented in FEA.
+  \newslide
+  This makes the global matrix dependent on the crystal momentum.
+  The eigenvalue problem of the matrix becomes this one.
+  \newslide
+  Next, we can compare the results of the two methods.
+  The tight-binding method predicts a flat band and two dispersive bands.
+  \newslide
+  Concerning to the FEA method,
+  in low-energy limit, it recovers the same structure,
+  \newslide
+  But also shows higher energy bands, i.e., the excited states.
+  So, this method is more robust.
+  \newframe
+  More important, I need to classify the nodes. It can be classified into
+  \newslide
+  Master nodes,
+  \newslide
+  slave nodes,
+  \newslide
+  and interior nodes due to different geometry and physics conditions.
+  \newslide
+  Due to the Classification of the nodes, the wavefunction at each element
+  should be also classified.
+  Since the master nodes and the slave nodes are both on the edges,
+  their wavefunction just differ by a phase factor.
+  Then, the eigenequation can be rewritten in terms of $\tilde{\bm\Psi}$.
+  \newframe
+  Now, we arrive at the most important part.
+  We need to define the domain,
+  \newslide
+  and then choose the unit cell for the Kagome lattice.
+  This figure shows the structure of the Kagome lattice,
+  \newslide
+  at each point, there is a carbon atom, but we need to divide them into three
+  categories:
+  \newslide
+  since the unit cell is a $C_{3h}$ group.
+  \newframe
+  Next, we need to mesh it.
+  The mesh respects the 3-fold symmetry.
+  \newslide
+  Local refinement near potential wells,
+  \newslide
+  Periodic node pairs are identified along opposite edges.
+  \newslide
+  In total there are about 5000 elements, and 10000 degrees of freedom.
+  \newslide
+  Figure (a) shows the meshing of the unit cell with an inset highlighting the
+  ligament.
+  \newslide
+  Figure (b) shows the schematics of the boundary conditions in the FE
+  simulations to determine the equivalent longitudinal, shear, and torsional
+  stiffnesses of the ligament.
+  \newslide
+  Inside each well, the potential is defined using the step function.
+  \newslide
+  This piecewise constant potential is easy to integrate in FEA.
+  \newslide
+  Now, I will show the results of this model.
+  \newslide
+  The solution of the energy band including two
+  dispersive bands and one flat band.
+  \newslide
+  which are plotted in the left figures.
+  \newslide
+  People usually care about the high-symmetry points.
+  In the energy band figure, the path $\Gamma \to K \to M \to \Gamma$ is
+  sampled with $40$ points per segment.
+  \newslide
+  And as the increase of the number of the elements, the flat band energy
+  converges to within 1\% with the finest mesh.
+  \newslide
+  Finally, we will learn about the Geometric Effects in FEA.
+  \newslide
+  This effect is not available in the tight-binding method.
+  \newslide
+  We can obtain how the band gap changes with atom size,
+  \newslide
+  The transition from nearly-free electrons to strongly bound states,
+  \newslide
+  and we can remove elements from the mesh to simulate vacancies.
+  \newslide
+  OK. So much for today's presentation.
+  \newframe
+  Thanks for listening.
+\end{multicols*}
+
+\end{document}
